@@ -25,7 +25,7 @@ export default function AppSlider() {
   return (
     <Box>
       <Slider
-      className='text-red-600'
+      className='text-green-600'
         marks={marks}
         step={10}
         value={val}
