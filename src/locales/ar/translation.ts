@@ -1,4 +1,5 @@
 export default {
+    appName: "ألمتجر",
     sidebar: {
         tab1: "الصفحة الرئيسية",
         tab2: "إدارة الطلبات",

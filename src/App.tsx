@@ -2,66 +2,11 @@ import { ThemeProvider } from "@emotion/react";
 import { PaletteMode, createTheme } from "@mui/material";
 import * as locales from '@mui/material/locale';
 import React, { createContext, useEffect, useMemo, useState } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
+import router from "./@services/routes.tsx";
 import { TsupportedLocales } from "./@types/types.ts";
 import { LoadingProvider } from "./components/commonUI/GlobalLoader/LoadingProvider.tsx";
-import AdminDefalutLayout from "./layouts/DefaultAdmin/index.tsx";
-import ShopDefalutLayout from "./layouts/DefaultShop/index.tsx";
-import LayoutWrapper from "./layouts/index.tsx";
-import About from "./pages/AdminPages/About/index.tsx";
-import Error404 from "./pages/AdminPages/Error404/index.tsx";
-import Home from "./pages/AdminPages/Home/index.tsx";
-import Shop from "./pages/Shop";
-import Settings from "./pages/AdminPages/Settings/index.tsx";
 import { RTLprovider } from "./components/commonUI/GlobalRTL/RTLprovider.tsx";
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <>
-        <LayoutWrapper layout={AdminDefalutLayout} component={Home} />
-      </>
-    ),
-  },
-  {
-    path: "/settings/users",
-    element: (
-      <>
-        <LayoutWrapper layout={AdminDefalutLayout} component={About} />
-      </>
-    ),
-  },
-  {
-    path: "/about",
-    element: (
-      <>
-        <LayoutWrapper layout={AdminDefalutLayout} component={About} />
-      </>
-    ),
-  },
-  {
-    path: "/settings",
-    element: (
-      <>
-        <LayoutWrapper layout={AdminDefalutLayout} component={Settings} />
-      </>
-    ),
-  },
-  {
-    path: "/shop",
-    element: (
-      <>
-        <LayoutWrapper layout={ShopDefalutLayout} component={Shop} />
-      </>
-    ),
-  },
-  {
-    path: "*",
-    element: <Error404 />,
-  },
-]);
 
 export const ColorModeContext = createContext<{
   mode: PaletteMode;
@@ -82,6 +27,12 @@ useEffect(() => {
   const theme = useMemo(
     () =>
       createTheme({
+        typography:{
+          fontFamily: [
+            'Alexandria',
+            'sans-serif'
+          ].join(','),
+        },
         direction: locale === "arEG" ? "rtl" : "ltr",
         components: {
           MuiButtonBase: {
